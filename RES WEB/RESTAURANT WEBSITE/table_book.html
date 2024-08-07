@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(image/easy-order-scaled.jpg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .booking-container, .confirmation-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 40%;  
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        form, .confirmation-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        label {
+            margin-bottom: 5px;
+        }
+        
+        input {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 10px;
+        }
+        
+        button:hover {
+            background-color: #218838;
+        }
+        
+        #homeButton {
+            background-color: #007bff;
+        }
+        
+        #homeButton:hover {
+            background-color: #0056b3;
+        }
+        
+        #confirmationDetails {
+            margin-bottom: 20px;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="booking-container" id="bookingContainer">
+        <h1>Book a Table</h1>
+        <form id="bookingForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}">
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" required>
+
+            <label for="guests">Number of Guests:</label>
+            <input type="number" id="guests" name="guests" required min="1">
+
+            <div class="error" id="errorMessage" style="display: none;">Please fill out all fields correctly.</div>
+
+            <button type="submit">Book Now</button>
+            <button type="button" id="homeButton">Back to Home</button>
+        </form>
+    </div>
+
+    <div class="confirmation-container" id="confirmationContainer" style="display: none;">
+        <h1>Booking Confirmation</h1>
+        <p id="confirmationDetails"></p>
+        <button id="okButton">OK</button>
+    </div>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const guests = document.getElementById('guests').value;
+            const errorMessage = document.getElementById('errorMessage');
+
+            if (!name || !email || !phone || !date || !time || !guests) {
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            errorMessage.style.display = 'none';
+
+            const bookingDetails = {
+                name,
+                email,
+                phone,
+                date,
+                time,
+                guests
+            };
+
+            displayConfirmation(bookingDetails);
+        });
+
+        function displayConfirmation(details) {
+            const bookingContainer = document.getElementById('bookingContainer');
+            const confirmationContainer = document.getElementById('confirmationContainer');
+            const confirmationDetails = document.getElementById('confirmationDetails');
+
+            confirmationDetails.innerHTML = `
+                <strong>Name:</strong> ${details.name}<br>
+                <strong>Email:</strong> ${details.email}<br>
+                <strong>Phone:</strong> ${details.phone}<br>
+                <strong>Date:</strong> ${details.date}<br>
+                <strong>Time:</strong> ${details.time}<br>
+                <strong>Guests:</strong> ${details.guests}
+            `;
+
+            bookingContainer.style.display = 'none';
+            confirmationContainer.style.display = 'block';
+
+            document.getElementById('okButton').addEventListener('click', () => {
+                alert('Your table has been booked!');
+                confirmationContainer.style.display = 'none';
+                bookingContainer.style.display = 'block';
+                document.getElementById('bookingForm').reset();
+            });
+        }
+
+        document.getElementById('homeButton').addEventListener('click', () => {
+            window.location.href = 'index.html';  // Change 'home.html' to your actual home page URL
+        });
+    </script>
+</body>
+</html>

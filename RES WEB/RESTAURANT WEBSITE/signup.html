@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Signup</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-image: url(image/easy-order-scaled.jpg);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.signup-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.signup-container h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.signup-container label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.signup-container input[type="text"],
+.signup-container input[type="email"],
+.signup-container input[type="password"],
+.signup-container input[type="tel"],
+.signup-container input[type="text"] {
+    width: 93%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.signup-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.signup-container button:hover {
+    background-color: #218838;
+}
+
+.signup-container p {
+    margin-top: 15px;
+}
+
+.signup-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.signup-container a:hover {
+    text-decoration: underline;
+}
+</style>
+</head>
+<body>
+    <div class="signup-container">
+        <h1>Sign Up</h1>
+        <form id="signupForm">
+            <label for="name">Full Name</label>
+            <input type="text" id="signupName" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="signupEmail" name="email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="signupPassword" name="password" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="signupPhone" name="phone" required>
+
+            <label for="address">Address</label>
+            <input type="text" id="signupAddress" name="address" required>
+
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Log in here</a></p>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get user input
+            var name = document.getElementById('signupName').value;
+            var email = document.getElementById('signupEmail').value;
+            var password = document.getElementById('signupPassword').value;
+            var phone = document.getElementById('signupPhone').value;
+            var address = document.getElementById('signupAddress').value;
+
+            // Get existing users from localStorage or initialize an empty array
+            var users = JSON.parse(localStorage.getItem('users')) || [];
+
+            // Check if the user already exists
+            var existingUser = users.find(function(user) {
+                return user.email === email;
+            });
+
+            if (existingUser) {
+                alert('User already exists. Please login.');
+            } else {
+                // Add new user to the array
+                users.push({
+                    name: name,
+                    email: email,
+                    password: password,
+                    phone: phone,
+                    address: address
+                });
+
+                // Save updated users array back to localStorage
+                localStorage.setItem('users', JSON.stringify(users));
+
+                // Manually clear each input field
+                document.getElementById('signupName').value = '';
+                document.getElementById('signupEmail').value = '';
+                document.getElementById('signupPassword').value = '';
+                document.getElementById('signupPhone').value = '';
+                document.getElementById('signupAddress').value = '';
+
+                alert('Signup successful! Please login.');
+                
+                // Optionally, redirect to login page
+                setTimeout(function() {
+                    window.location.href = 'login.html';
+                }, 100); // 100 milliseconds delay
+            }
+        });
+    </script>
+</body>
+</html>

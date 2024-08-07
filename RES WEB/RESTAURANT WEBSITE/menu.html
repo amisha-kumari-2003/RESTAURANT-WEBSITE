@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="dropdown">
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+                <a href="#" onclick="showCategory('all')">All Items</a>
+                <a href="#" onclick="showCategory('beverages')">Beverages</a>
+                <a href="#" onclick="showCategory('desserts')">Desserts</a>
+                <a href="#" onclick="showCategory('rice')">Rice</a>
+                <a href="#" onclick="showCategory('bread')">Bread</a>
+                <a href="#" onclick="showCategory('chicken')">Chicken</a>
+                <a href="#" onclick="showCategory('mutton')">Mutton</a>
+                <a href="#" onclick="showCategory('fastfood')">Fast Food</a>
+                <a href="#" onclick="showCategory('vegetarian')">Vegetarian</a>
+            </div>
+        </div>
+        <div class="cart">
+            <button class="cart-btn" onclick="viewCart()">
+                Cart <span id="cart-count">0</span>
+            </button>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+        </ul>
+    </nav>
+
+    <div id="menu-items" class="menu-items">
+        <!-- Dynamic content will be injected here -->
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

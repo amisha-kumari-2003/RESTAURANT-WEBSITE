@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-image: url(image/home-bg.jpg);
+}
+
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropbtn {
+    background-color: #333;
+    color: white;
+    padding: 14px 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+.dropbtn:hover{
+    color: #275c7a;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #275c7a;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+ ul {
+    list-style-type: none;
+    
+}
+
+ ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+ ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+ul li a:hover {
+    color: #275c7a;
+}
+
+.menu-items {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 70px;
+    margin-right: 40px;
+  
+}
+
+.menu-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    width: 200px;
+    height: 350px;
+}
+
+.menu-item img {
+    width: 100%;
+    height: auto;
+    height: 50%;
+   
+}
+
+.add-to-cart {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.add-to-cart:hover {
+    background-color: #45a049;
+}
+
+.quantity-select {
+    margin-top: 5px;
+    padding: 5px;
+    width: 100%;
+}
+
+.cart {
+    float: right;
+    margin: 10px;
+}
+
+.cart-btn {
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    padding: 14px 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cart-btn:hover {
+    background-color: #e64a19;
+}
+

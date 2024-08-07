@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(image/easy-order-scaled.jpg);
+            color: #333;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: #333;
+            padding: 10px 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+        }
+
+        .navbar a:hover {
+            background-color: #575757;
+        }
+
+        /* Checkout container styles */
+        .checkout-container {
+            width: 40%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .checkout-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Form styles */
+        .checkout-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .checkout-form label {
+            font-weight: bold;
+        }
+
+        .checkout-form input, .checkout-form textarea, .checkout-form select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            width: 98%;
+        }
+
+        .checkout-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Payment method styles */
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .payment-methods label {
+            margin-left: 5px;
+        }
+
+        .place-order {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .place-order:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="cart.html">Back to Cart</a>
+    </nav>
+
+    <div class="checkout-container">
+        <h2>Checkout</h2>
+        <form class="checkout-form" id="checkout-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="message">Message (optional):</label>
+            <textarea id="message" name="message"></textarea>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
+
+            <label for="payment">Payment Method:</label>
+            <div class="payment-methods">
+                <label><input type="radio" name="payment" value="phone-pay" required> Phone Pay</label>
+                <label><input type="radio" name="payment" value="google-pay"> Google Pay</label>
+                <label><input type="radio" name="payment" value="cash-on-delivery"> Cash on Delivery</label>
+            </div>
+
+            <button type="submit" class="place-order">Place Order</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('checkout-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+            const address = document.getElementById('address').value;
+            const payment = document.querySelector('input[name="payment"]:checked').value;
+
+            alert(`Please click on OK button to confirm orderd successfully!\n\nName: ${name}\nMessage: ${message}\nAddress: ${address}\nPayment Method: ${payment}`);
+
+            // Optionally, redirect to a confirmation page or perform further actions
+             window.location.href = 'confirmation.html';
+        });
+    </script>
+</body>
+</html>
+
+
